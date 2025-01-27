@@ -1,4 +1,4 @@
-const BASE_URL = process.env.API_URL;
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 async function fetchData(endpoint, options = {}) {
   const response = await fetch(`${BASE_URL}${endpoint}`, {
@@ -22,19 +22,19 @@ export async function fetchUserAndGames(steamid) {
   return { userInfo, gamesInfo };
 }
 
-export async function fetchStats() {
-  const playtime = await fetchPlaytime();
-  const bosses = await fetchBosses();
-  const achievements = await fetchAchievements();
+export async function fetchStats(steamid, appid) {
+  const playtime = await fetchPlaytime(steamid, appid);
+  const bosses = await fetchBosses(steamid, appid);
+  const achievements = await fetchAchievements(steamid, appid);
   return { playtime, bosses, achievements };
 }
 
 export async function fetchPlaytime(steamid, appid) {
-  return fetchData(`/playtime/${steamid}/${appid}`);
+  return fetchData(`playtime/${steamid}/${appid}`);
 }
-export async function fetchBosses() {
-  return fetchData(`/playtime/${steamid}/${appid}`);
+export async function fetchBosses(steamid, appid) {
+  return fetchData(`bosses/${steamid}/${appid}`);
 }
-export async function fetchAchievements() {
-  return fetchData(`/playtime/${steamid}/${appid}`);
+export async function fetchAchievements(steamid, appid) {
+  return fetchData(`achievements/${steamid}/${appid}`);
 }
