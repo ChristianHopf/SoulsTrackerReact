@@ -1,4 +1,3 @@
-// import React from "react";
 import GameSelect from "./GameSelect";
 import UserInput from "./UserInput";
 
