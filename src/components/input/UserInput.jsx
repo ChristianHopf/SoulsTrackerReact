@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { fetchUserAndGames } from "../../utils/api";
 import { useSelector, useDispatch } from "react-redux";
 import { setUser } from "../../features/stats/userSlice";
+import { setGames } from "../../features/stats/gamesSlice";
 
 function UserInput() {
   // const user = useSelector((state) => state.user.value);
@@ -17,6 +18,7 @@ function UserInput() {
     const data = await fetchUserAndGames(steamidInput);
     console.log(data);
     dispatch(setUser(data.userInfo));
+    dispatch(setGames(data.gamesInfo));
     // setSteamidInput("");
   };
 
