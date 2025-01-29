@@ -1,10 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import TipGames from "../layout/TipGames";
-import { fetchStats } from "../../utils/api";
-import { setPlaytime } from "../../features/stats/playtimeSlice";
-import { setBosses } from "../../features/stats/bossesSlice";
-import { setAchievements } from "../../features/stats/achievementsSlice";
+import { fetchStatsData } from "../../features/stats/statsSlice";
 
 function GameSelect() {
   const user = useSelector((state) => state.user.value);
@@ -19,11 +16,7 @@ function GameSelect() {
   };
 
   const handleGetStats = async () => {
-    const data = await fetchStats(user.steamid, selectedGame);
-
-    dispatch(setPlaytime(data.playtime));
-    dispatch(setBosses(data.bosses));
-    dispatch(setAchievements(data.achievements));
+    dispatch(fetchStatsData({ steamid: user.steamid, appid: selectedGame }));
   };
 
   let getStatsButton;
@@ -60,7 +53,9 @@ function GameSelect() {
           <option value="ignore">Select game</option>
           {games &&
             games.map((game) => (
-              <option key={game.appid} value={game.appid}>{game.name}</option>
+              <option key={game.appid} value={game.appid}>
+                {game.name}
+              </option>
             ))}
         </select>
       </label>
