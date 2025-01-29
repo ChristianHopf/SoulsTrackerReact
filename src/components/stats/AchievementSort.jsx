@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { sortAchievements } from "../../features/stats/statsSlice";
+import { useDispatch } from "react-redux";
 
 function AchievementSort() {
+  const dispatch = useDispatch();
   const [hidden, setHidden] = useState(true);
 
   const toggleSortDropdown = () => {
@@ -26,29 +29,41 @@ function AchievementSort() {
         <div className="flex flex-col gap-2 items-start">
           <button
             type="button"
-            className="text-sm {{if this.activeDateNewSort 'font-semibold' ''}}"
-            // {{on "click" (fn this.sortAchievements "date-new")}}
+            // className="text-sm {{if this.activeDateNewSort 'font-semibold' ''}}"
+            className="text-sm"
+            onClick={() => {
+              dispatch(sortAchievements("date-new"));
+            }}
           >
             Date (new)
           </button>
           <button
             type="button"
-            className="text-sm {{if this.activeDateOldSort 'font-semibold' ''}}"
-            // {{on "click" (fn this.sortAchievements "date-old")}}
+            // className="text-sm {{if this.activeDateOldSort 'font-semibold' ''}}"
+            className="text-sm"
+            onClick={() => {
+              dispatch(sortAchievements("date-old"));
+            }}
           >
             Date (old)
           </button>
           <button
             type="button"
-            className="text-sm {{if this.activeRarityMostSort 'font-semibold' ''}}"
-            // {{on "click" (fn this.sortAchievements "rarity-most")}}
+            // className="text-sm {{if this.activeRarityMostSort 'font-semibold' ''}}"
+            className="text-sm"
+            onClick={() => {
+              dispatch(sortAchievements("rarity-most"));
+            }}
           >
             Rarity (most rare)
           </button>
           <button
             type="button"
-            className="text-sm {{if this.activeRarityLeastSort 'font-semibold' ''}}"
-            // {{on "click" (fn this.sortAchievements "rarity-least")}}
+            // className="text-sm {{if this.activeRarityLeastSort 'font-semibold' ''}}"
+            className="text-sm"
+            onClick={() => {
+              dispatch(sortAchievements("rarity-least"));
+            }}
           >
             Rarity (least rare)
           </button>

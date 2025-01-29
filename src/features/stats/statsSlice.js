@@ -15,8 +15,40 @@ const statsSlice = createSlice({
     data: {},
     loading: false,
     error: null,
+    sort: "date-new",
   },
-  reducers: {},
+  reducers: {
+    sortAchievements: (state, action) => {
+      console.log("sorting");
+      let sort = action.payload;
+      state.sort = sort;
+      switch (sort) {
+        case "date-new":
+          // sort: < 0 if a < b, 0 if a == b, > 0 if a > b
+          state.data.achievements = state.data.achievements.sort((a, b) => {
+            return parseInt(b.unlocktime) - parseInt(a.unlocktime);
+          });
+          break;
+        case "date-old":
+          state.data.achievements = state.data.achievements.sort((a, b) => {
+            return parseInt(a.unlocktime) - parseInt(b.unlocktime);
+          });
+          break;
+        case "rarity-most":
+          state.data.achievements = state.data.achievements.sort((a, b) => {
+            return parseInt(a.rarity) - parseInt(b.rarity);
+          });
+          break;
+        case "rarity-least":
+          state.data.achievements = state.data.achievements.sort((a, b) => {
+            return parseInt(b.rarity) - parseInt(a.rarity);
+          });
+          break;
+        default:
+          break;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchStatsData.pending, (state) => {
@@ -33,5 +65,7 @@ const statsSlice = createSlice({
       });
   },
 });
+
+export const { sortAchievements } = statsSlice.actions;
 
 export default statsSlice.reducer;
