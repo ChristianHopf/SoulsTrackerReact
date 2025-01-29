@@ -60,7 +60,7 @@ function GameSelect() {
           <option value="ignore">Select game</option>
           {games &&
             games.map((game) => (
-              <option value={game.appid}>{game.name}</option>
+              <option key={game.appid} value={game.appid}>{game.name}</option>
             ))}
         </select>
       </label>
