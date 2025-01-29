@@ -5,6 +5,7 @@ import gamesReducer from "./features/stats/gamesSlice";
 import playtimeReducer from "./features/stats/playtimeSlice";
 import bossesReducer from "./features/stats/bossesSlice";
 import achievementsReducer from "./features/stats/achievementsSlice";
+import statsReducer from "./features/stats/statsSlice";
 
 let rootReducer = combineReducers({
   user: userReducer,
@@ -12,6 +13,7 @@ let rootReducer = combineReducers({
   playtime: playtimeReducer,
   bosses: bossesReducer,
   achievements: achievementsReducer,
+  stats: statsReducer,
 });
 
 export default configureStore({
