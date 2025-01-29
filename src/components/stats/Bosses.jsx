@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-function Bosses() {
-  const bosses = useSelector((state) => state.bosses.value);
+function Bosses({bosses}) {
+  // const bosses = useSelector((state) => state.bosses.value);
 
   const [hidden, setHidden] = useState(false);
 

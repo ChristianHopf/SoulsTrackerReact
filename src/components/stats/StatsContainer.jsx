@@ -18,14 +18,13 @@ function StatsContainer() {
   } else if (error) {
     return <Unsupported />;
   } else if (data) {
-    // console.log(data);
     return (
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="flex flex-col w-full gap-4">
-          <Playtime />
-          <Bosses />
+          <Playtime playtime={data.playtime} />
+          <Bosses bosses={data.bosses} />
         </div>
-        <Achievements />
+        <Achievements achievements={data.achievements} />
       </div>
     );
   }

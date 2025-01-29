@@ -2,8 +2,8 @@ import { useSelector } from "react-redux";
 import AchievementSort from "./AchievementSort";
 import AchievementItem from "./AchievementItem";
 
-function Achievements() {
-  const achievements = useSelector((state) => state.achievements.value);
+function Achievements({achievements}) {
+  // const achievements = useSelector((state) => state.achievements.value);
   if (achievements) {
     return (
       <div

@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 
-function Playtime() {
-  const playtime = useSelector((state) => state.playtime.value);
+function Playtime({ playtime }) {
+  // Could probably also make this get playtime data from useSelector,
+  // but passing it as a prop from StatsContainer is fine for now
 
   if (playtime) {
     return (
