@@ -14,6 +14,7 @@ function UserInput() {
   };
 
   const handleFindUser = async () => {
+    // set loading in userinfo
     const data = await fetchUserAndGames(steamidInput);
     dispatch(setUser(data.userInfo));
     dispatch(setGames(data.gamesInfo));
