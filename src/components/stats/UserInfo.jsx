@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 function UserInfo() {
   const user = useSelector((state) => state.user.value);
-  console.log(user);
 
   if (user && Object.keys(user).length > 0) {
     return (

@@ -5,7 +5,6 @@ import { setUser } from "../../features/stats/userSlice";
 import { setGames } from "../../features/stats/gamesSlice";
 
 function UserInput() {
-  // const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
 
   const [steamidInput, setSteamidInput] = useState("");
@@ -16,10 +15,8 @@ function UserInput() {
 
   const handleFindUser = async () => {
     const data = await fetchUserAndGames(steamidInput);
-    console.log(data);
     dispatch(setUser(data.userInfo));
     dispatch(setGames(data.gamesInfo));
-    // setSteamidInput("");
   };
 
   let findUserButton;

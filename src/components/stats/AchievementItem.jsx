@@ -2,7 +2,6 @@
 
 function AchievementItem({ achievement }) {
   const unlockDate = new Date(achievement.unlocktime * 1000).toDateString();
-  console.log("rerender achievement item");
 
   return (
     <li className="flex flex-row gap-2 items-start md:items-center">
